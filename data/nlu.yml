@@ -1,0 +1,806 @@
+version: "3.1"
+nlu:
+- intent: start
+  examples: |
+    - /start
+    - start
+- intent: greet
+  examples: |
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hey
+    - hello
+    - hi
+    - hi there
+    - hello there
+    - greetings
+    - Hi
+    - helo
+    - Hi!
+    - Hi'
+    - Hi,
+    - Hi, bot
+    - Hieee
+    - Hieeeeeeeeeeeee
+    - Hola
+    - What is up?
+    - Whats up
+    - Whats up my bot
+    - Whats up?
+    - ayyyy whaddup
+    - bonjour
+    - ey boss
+    - I said, helllllloooooO!!!!
+    - Well hello there ;)
+    - Hi, My name is [Sandro](PERSON)
+    - Hello, I am [Simone](PERSON)
+    - good evening to you
+    - hey good evening
+    - hello good evening
+    - evening
+    - GM
+    - good morning to you
+    - hello good morning
+    - have a nice morning
+    - have a great morning
+    - morning
+    - good morning there
+    - top of the morning to you
+    - a good morning
+    - hi good morning
+    - and a good morning to you
+    - good morning too
+    - long time no see
+    - howdy
+    - I greet you
+    - lovely day isn't it
+    - hello again
+    - just going to say hi
+    - a good day
+    - afternoon
+    - hello hi
+    - heya
+    - Hello
+    - hey man
+    - hey buddy
+    - oka
+    - yo man
+    - hola
+    - Hallo
+    - Hey
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - okay see you later
+    - hope to see you later
+    - bye for now
+    - till next time
+    - I must go
+    - see you
+    - see you soon
+    - bye-bye
+    - bye bye good night
+    - good bye
+    - bye bye see you
+    - bye bye see you soon
+    - bye bye take care
+    - I said bye
+    - never mind bye
+    - now bye
+    - that's all goodbye
+    - that's it goodbye
+    - leave me alone
+    - go to bed
+    - goodbye for now
+    - talk to you later
+    - you can go now
+    - get lost
+    - goodbye see you later
+    - alright bye
+    - see ya
+    - thanks bye bye
+    - okay bye
+    - okay thank you bye
+    - see you tomorrow
+    - ok bye
+    - c u
+    - have an awesome evening
+    - happy evening
+    - have a good evening
+    - enjoy the evening
+    - GN
+    - sweet dreams
+    - have a good night
+    - good night to you
+    - thank you good night
+    - bye good night
+    - good night bye
+    - good good night
+    - good night for now
+    - goodnight
+    - night
+    - thanks goodnight
+    - good night see you tomorrow
+    - alright goodnight
+    - good tonight
+    - okay have a good night
+    - let's go to bed
+    - I'd like to go to bed
+    - is it time for bed yet
+    - it's time to go to bed
+    - time for us to go to bed
+    - I'm going to bed
+    - I'm a little tired and I want to go to bed
+    - it's bed time
+    - going to bed now
+    - gonna go to bed
+    - time to sleep
+- intent: PERSON
+  examples: |
+    - I'm [Peter](PERSON)
+    - [Jeff](PERSON)
+    - [Sandro](PERSON)
+    - [Simone](PERSON)
+    - My name is [Eoline](PERSON)
+    - I'm [Francesca](PERSON)
+    - [Mary](PERSON)
+    - My name is [Sandro](PERSON)
+    - [Svenja](PERSON)
+    - [Stefan](PERSON)
+    - [Petra](PERSON)
+    - [Johnny](PERSON)
+    - [Peter](PERSON)
+    - [Cyril](PERSON)
+    - [Charuta](PERSON)
+    - I am [Esteban](PERSON)
+    - [Pedro](PERSON)
+    - [Tinu](PERSON)
+    - [Kevin](PERSON)
+    - [Lanz](PERSON)
+    - [Alex](PERSON)
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - yup
+    - Yes
+    - yes, please
+    - yes please
+    - let's do it
+    - sure
+    - yeah
+    - ok
+    - OK
+    - Ok
+    - yes, I see
+    - yes!
+    - sounds good
+    - Yes it is
+    - that's true
+    - you are right
+    - you're definitely right
+    - you're not wrong
+    - you're telling the truth
+    - what you say is true
+    - true
+    - it is true
+    - it's right
+    - it's the truth
+    - it's true
+    - that is correct
+    - that is right
+    - that is true
+    - that is very true
+    - that's correct
+    - that's so true
+    - you are correct
+    - you are so right
+    - you're absolutely right
+    - you're right about that
+    - I know that's right
+    - yeah exactly
+    - okay that's fine
+    - I agree
+    - that is ok
+    - I guess
+    - okey
+    - ya
+    - ok yes
+    - yes it is
+    - yep
+    - yew
+    - yeah fine
+    - yea fine
+    - yep okay
+    - fine okay
+    - YEAH
+    - okay buddy
+    - oh okay
+    - yeah sure
+    - okay cool
+    - coool
+    - kk
+    - Y
+    - ok, I understand
+    - understood
+    - exactly
+    - yes, exactly
+    - Yes, please
+    - Sure
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - nope
+    - no, thank you
+    - no thank you
+    - na
+    - nay
+    - No I don't have a problem with this.
+    - no, its easy
+    - No
+    - don't
+    - don't want
+    - need not
+    - don't come
+    - never help
+    - not needed
+    - of course not
+    - not at this time
+    - not exactly
+    - absolutely no
+    - no forget
+    - do not
+    - no thanks
+    - no don't want
+    - sorry no
+    - don't want your help
+    - I don't you help
+    - I don't want your assistance
+    - get out goodbye
+    - i do not want your help
+    - i don't need your help
+    - i don't want your help
+    - i am not okay with your help
+    - I don't need anything from you
+    - okay keep it in mind
+    - nope i dont need your help
+    - Don't show off
+    - No, not yet
+- intent: emotion
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - happy
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - Feeling happy
+    - I am happy
+    - I'm happy to see you
+    - if you're happy then I'm happy
+    - I'm happy for you
+    - I'm happy to help
+    - you made me very happy
+    - I'm glad to see you
+    - I'm happy to talk to you
+    - I was the happiest man on earth
+    - I'm just really happy right now
+    - I'm really happy I ran into you
+    - I feel happiest when I'm chatting with u
+    - Nobody but you can make me happy
+    - Whenever I see you, I feel happy
+    - ur smile always makes me happy
+    - i feel happy
+    - i was so happy
+    - I am good
+    - I'm doing just great
+    - I'm doing fine
+    - I'm good
+    - I'm doing good
+    - I'm great thanks
+    - I'm super good
+    - I'm feeling great
+    - I'm in a good mood
+    - I'm doing really good
+    - good
+    - It's good
+    - I feel good
+    - That's good
+    - That feels good
+    - I feel very good
+    - i am pretty good
+    - I feel good today
+    - I am really good
+    - I am excited
+    - I'm really excited
+    - how excited I am
+    - I'm thrilled
+    - I'm excited about working with you
+    - I'm excited to start our friendship
+    - I am thrilled to talk to you
+    - I'm damn excited
+    - I'm hyped
+    - I'm very excited
+    - I felt excited
+    - It was exciting
+    - That was exciting
+    - How exciting!
+    - i'm excited about tomorrow
+    - It was very exciting! I'd like to use this feature again
+    - I'm pretty excited about it
+    - It's fun and exciting
+    - Well, still pretty hard, but thanks for helping
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+    - I'm being mad
+    - I'm enraged
+    - I'm angry
+    - I'm furious
+    - I am angry with you
+    - I am mad
+    - I am mad at you
+    - i'm pissed off
+    - you have pissed me off
+    - I'm mad at you
+    - I am pissed
+    - I'm furious with you
+    - I got angry
+    - I was angry
+    - it was really bad!
+    - I am feeling insecure about it
+    - I don't know
+    - I became angry
+    - I was very angry
+    - You bet I'm angry
+    - That made me angry
+    - U made me angry
+    - I'm still angry about that
+    - I'm in a sad mood
+    - I'm grieving
+    - I am depressed
+    - I am feeling sad
+    - I am upset
+    - I'm unhappy
+    - I'm having a bad day
+    - I want to cry
+    - I'm not happy
+    - feeling sad
+    - I felt sad for no reason
+    - Now I'm sad
+    - It makes me sad
+    - I am sad to hear it
+    - I am a very sad person
+    - I feel sad every now and then
+    - I am as sad and lonely as can be
+    - feeling so down
+    - i am not in a good mood
+    - awful
+    - I am feeling awful
+    - Well, not feeling too good
+    - Well, I am very nervous, I don't know how she will react...
+    - well, soso
+    - not so good
+    - I am disgusted
+    - that's disgusting
+    - I am angry
+    - that makes me angry
+    - I fear being alone
+    - I am feared
+    - I am anxious
+    - that's sad
+    - makes me sad
+    - pretty surprised!
+    - that's a surprise!
+    - I am ok
+    - I desperately want to have kids
+    - I really want to have kids!
+    - I am scared
+    - I am scared that he will leave me
+    - I am so pissed off. I don't understand why I am in this situation.
+    - Well, it disgusts me thinking about swallowing pills every day - pure horror!
+    - Well, I can't believe I have to swallow pills every day - pure horror!
+    - I detest
+    - distaste
+    - horror
+    - I have a huge distaste for taking pills every day!
+    - I desperately want to have kids!
+- intent: male
+  examples: |
+    - male
+    - I am a man
+    - I am male
+    - Man
+- intent: female
+  examples: |
+    - female
+    - I am a woman
+    - I am female
+- intent: bot_capabilities
+  examples: |
+    - What can you do?
+    - How can you help?
+    - how can you support me?
+    - what can you do?
+    - what can do?
+    - what is your ability?
+    - what are your abilities?
+    - what is the thing that you can do for me?
+    - what you can provide for me?
+    - what can u do?
+    - what all you do?
+    - what all u do?
+    - what you do?
+    - what can you do for me?
+    - what all can you do?
+    - what are your features?
+- intent: bot_challenge
+  examples: |
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+    - tell me about your personality
+    - why are you here
+    - talk about yourself
+    - tell me some stuff about you
+    - talk some stuff about yourself
+    - I want to know you better
+    - I want to know more about you
+    - who are you
+    - tell me about yourself
+    - tell me about you
+    - about yourself
+    - describe yourself
+    - introduce yourself
+    - say about you
+    - what are you
+    - define yourself
+    - what is your personality
+    - all about you
+    - what are you upto?
+    - who the hell are you?
+    - what can you do for me?
+    - you are chatbot
+    - you are a bot
+    - are you a chatbot
+    - are you a bot
+    - are you just a bot
+    - are you a robot
+    - are you a program
+    - you're a robot
+    - you're an AI
+    - are you artificially intelligent?
+    - are you an AI?
+    - you are a program
+    - you are just a bot
+    - you are a conversational AI
+- intent: out_of_scope
+  examples: |
+    - what is the square root of 5
+    - I want to know the weather
+    - what is the meaning of life.
+    - Fridge Isn't Running
+    - my tv isn't working
+    - I want a pizza
+    - my washing machine isn't working
+    - what year is it
+    - order a pizza
+    - I want to order a pizza
+    - what is the weather today
+    - what is the weather
+    - how old are you?
+    - add two plus two
+    - Hdjejene
+    - asd
+    - title
+    - how about the forecast
+    - foolish
+    - joke
+    - Can I get a hamburger?
+    - Can YouTube talk?
+    - Can you call me back ?
+    - Can you give me your datacenter's password
+    - Can you make sandwiches?
+    - Can you please send me an uber
+- intent: chatbot_repeating
+  examples: |
+    - you are repeating
+    - you repeat yourself
+    - you said that before
+    - i know
+    - I know
+    - That is not the answer I need
+    - That's not the answer i need
+    - ok, let's move on
+    - let's move on
+- intent: fac_disclosure_should
+  examples: |
+    - Should I tell anyone about my desease?
+    - I am HIV positive, should I tell anyone?
+    - is it safe to tell anybody?
+- intent: fac_disclosure_how
+  examples: |
+    - How shall I tell my [spouse](audience)?
+    - How should I tell my [partner](audience) about my sickness?
+    - How do I proceed?
+    - How should I tell anyone?
+    - Well, but how should I do it?
+    - Well, I am HIV positive and I don't know how to tell my [girlfriend](audience)
+    - So, how should I tell her?
+    - no, but how should I tell my [partner](audience)?
+    - I don't know how I should tell my [girlfriend](audience)?
+    - I don't know how I should tell my [spouse](audience)?
+    - How can I talk with my [partner](audience)?
+    - Well, I am HIV positive, but I don't know how I should tell my [boyfriend](audience)?
+- intent: fac_adherence_why
+  examples: |
+    - Do I need to take the medication every day?
+    - What about the medication?
+    - What about the medication? Why do I need to take it every day?
+    - why do I have to take the medication?
+    - Why do I need to take the sweets every day?
+- intent: fac_adherence_how
+  examples: |
+    - what do I need to consider when taking the pills?
+    - What to consider when taking the medicine?
+    - what to respect about the medicine?
+    - how should i take it?
+    - ok, I was wondering about the medication, like what I should consider when taking it?
+- intent: fac_contracting_sex
+  examples: |
+    - Can I still have sex?
+    - how can I have sex?
+    - Is it still possible to have sex?
+    - Is it safe to have sex with a partner?
+    - What does it mean for my [partner](audience)?
+    - What will change for my [partner](audience)?
+    - Will I infect my [boyfriend](audience)?
+    - Will I infect my [girlfriend](audience)?
+    - Will I infect my [husband](audience)?
+    - How about sex? can I still have sex?
+    - can I still have sex?
+    - Another thing that bothers me: Can I still have sex?
+- intent: fac_contracting_kids
+  examples: |
+    - what about kids, can I still become a father?
+    - can I still become a mother?
+    - can I still get pregnant?
+    - can I still deliver healthy kids?
+    - will my kids be sick?
+    - will my kids be infected?
+    - So, am i still able to have kids?
+    - Ok, but can I still have kids?
+    - Ok, but can I still have children?
+    - Ok, that's one thing, but can I still have kids?
+- intent: faq_explain_HIV
+  examples: |
+    - what is HIV?
+    - what is hiv
+    - tell me about hiv
+    - explain hiv
+    - can you explain HIV to me
+    - what is aids?
+    - What is AIDS
+    - what is hiv?
+- intent: faq_contracting_HIV
+  examples: |
+    - how is HIV contracted?
+    - how did I get HIV?
+    - how do people get HIV?
+    - how does hiv spread?
+    - how can people get HIV?
+    - how can i get hiv?
+    - how can you get hiv?
+    - how do you get hiv?
+    - how can i contract HIV?
+- intent: faq_HIV_vs_AIDS
+  examples: |
+    - what is the difference between hiv and aids
+    - what is the difference between aids and hiv?
+    - how is aids different from hiv?
+    - how is hiv different from aids?
+    - how do hiv and aids differ?
+    - is hiv aids?
+    - is aids hiv?
+    - difference between aids and hiv
+    - difference hiv and aids
+- intent: faq_HIV_fatal
+  examples: |
+    - is hiv deadly?
+    - can you die from hiv?
+    - can you die from aids?
+    - will i die from hiv?
+    - can hiv kill me?
+    - can hiv kill people?
+    - does hiv kill people?
+    - does hiv kill me?
+    - is aids deadly?
+- intent: faq_HIV_cure
+  examples: |
+    - is there a cure for HIV?
+    - is there a cure for hiv
+    - can hiv be cured?
+    - can hiv be cured
+    - is there a cure for aids?
+    - is there a cure for aids
+    - is there a cure?
+    - can I cure my sickness?
+    - cure me
+- intent: greetings.how_are_you
+  examples: |
+    - how is your morning so far
+    - how are you getting on
+    - how's your day going
+    - how are you?
+    - is everything all right
+    - how are you doing?
+    - how are the things going
+    - are you alright
+    - are you okay?
+    - and how are you?
+    - how are you feeling
+    - how are you going?
+    - is everything okay
+    - how are you today?
+    - how do you do?
+    - how do you feel?
+    - how have you been?
+    - how is it going?
+    - how is your day
+    - how is your day going
+    - how is your evening
+    - how was your day
+    - are you having a good day
+    - hope your day is going well
+    - hope you re having a pleasant evening
+    - how's life?
+    - I'm fine and you
+    - how is your life
+    - how has your day been
+    - how is your morning going
+    - how has your day been going
+    - how about you?
+    - how is your day being
+    - how is your day going on
+    - how your day is going
+    - what was your day like
+    - what about your day
+    - how's your day
+    - how are you doing this morning
+    - how are you
+- intent: agent.can_you_help
+  examples: |
+    - I need you to help me
+    - I need you to do something for me
+    - I need a hand
+    - will you help me
+    - can you do something for me
+    - help me with a problem
+    - can you help me
+    - help me
+    - assistance
+    - I need your help
+    - I need help
+    - you can help me
+    - can you help me with something
+    - can you help
+    - assist
+    - can u help me
+    - I need some help
+    - you help me
+    - do you help me
+    - could you give me a hand
+    - can you help me out
+    - need help
+    - I need you
+    - can you help me now
+    - I want your help
+    - need your help
+    - assist me
+    - are you going to help me
+    - can you help me with that
+    - help
+    - I need you right now
+    - would you help me
+    - can you assist me
+    - sos
+    - do you want to help me
+    - please help me
+    - can you help us
+    - do me a favor
+    - are you gonna help me?
+    - you ready to answer my question?
+    - i need some details
+    - i need some information
+    - i need your help in getting some info
+    - can you give me some info
+    - i want something
+    - i want to know few details
+    - will you provide some details
+    - can you fetch some details for me
+    - would you mind giving me some details
+    - Well, but you might be able to help me
+    - yeah, but you might can help me
+- intent: appraisal.thank_you
+  examples: |
+    - you helped a lot thank you
+    - appreciate your help
+    - cheers
+    - thank you
+    - thanks
+    - thanks a lot
+    - terrific thank you
+    - great thank you
+    - thanks so much
+    - thank you so much
+    - thanks for your help
+    - thank you for your help
+    - nice thank you
+    - I appreciate it
+    - I thank you
+    - thank you that will be all
+    - thanks buddy
+    - thanks love
+    - thank you my friend
+    - well thanks
+    - very good thank you
+    - good thanks
+    - thanks again
+    - thank you again
+    - all thank you
+    - alright thank you
+    - alright thanks
+    - no thank you that's all
+    - perfect thank you
+    - so nice of you
+    - well thank you
+    - thnx
+    - tqsm
+    - ty
+    - Well, it helped, thank you

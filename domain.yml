@@ -1,0 +1,505 @@
+version: "3.1"
+
+intents:
+  - start
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - PERSON
+  - emotion
+#  - mood_happy
+#  - mood_unhappy
+  - male
+  - female
+  - bot_capabilities
+  - bot_challenge
+  - out_of_scope
+  - chatbot_repeating
+  - fac_disclosure_should
+  - fac_disclosure_how
+  - fac_adherence_why
+  - fac_adherence_how
+  - fac_contracting_sex
+  - fac_contracting_kids
+  - faq_explain_HIV
+  - faq_contracting_HIV
+  - faq_HIV_vs_AIDS
+  - faq_HIV_fatal
+  - faq_HIV_cure
+#  - faq_HIV_positive
+  - greetings.how_are_you
+  - agent.can_you_help
+  - appraisal.thank_you
+
+entities:
+  - PERSON
+  - emotion
+  - audience
+  - sex
+
+slots:
+
+  PERSON:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: PERSON
+
+  emotion:
+    type: any
+    mappings:
+      - type: custom
+        action: action_emotion
+
+  audience:
+    type: text
+    mappings:
+      - type: from_text
+        intent: None
+
+  sex:
+    type: any
+    mappings:
+      - type: from_intent
+        value: "male"
+        intent: male
+      - type: from_intent
+        value: "female"
+        intent: female
+
+responses:
+
+  utter_greet:
+  - text: "Hi, my name is Ayo, what is your name?"
+  utter_PERSON:
+  - text: "Nice to meet you {PERSON}, how are you today?"
+  utter_bot_capabilities_reachout:
+  - text: "Do you want to know how I can help you?"
+  utter_bot_capabilities:
+  - text: "I can help you with general knowledge about HIV, if and how you might have been infected, how to proceed and much more. 
+          Just ask me your questions and I will try to answer them."
+  utter_emotion_introduction:
+    - condition:
+        - type: slot
+          name: emotion
+          value: "anger"
+      text: "Oh, are you angry {PERSON}? You know, maybe I can help… Do you want to know how?"
+    - condition:
+        - type: slot
+          name: emotion
+          value: "disgust"
+      text: "You are disgusted {PERSON}? Maybe I can help, do you want to know how?"
+    - condition:
+        - type: slot
+          name: emotion
+          value: "fear"
+      text: "I realize you are anxious… Don’t worry, we will sort that out {PERSON}! Do you want to know how I can help you?"
+    - condition:
+        - type: slot
+          name: emotion
+          value: "joy"
+      text: "Great to hear {PERSON}! Let’s move forward then, shall we? Do you want to know how I can help you?"
+    - condition:
+        - type: slot
+          name: emotion
+          value: "neutral"
+      text: "Alright {PERSON}. Do you want to know how I can help you?"
+    - condition:
+        - type: slot
+          name: emotion
+          value: "sadness"
+      text: "Oh, I feel sorry for you {PERSON}. But you know, maybe I can lift your spirits. Do you want to know how?"
+    - condition:
+        - type: slot
+          name: emotion
+          value: "Surprise"
+      text: "Are you surprised that I am asking this question?
+            Well listen {PERSON}, I care about you, that's why I am asking. 
+            Do you want to know how else I can help you?"
+  utter_unhappy_anything_else:
+  - text: "Hmmm.. I understand you {PERSON}, but is there anything else I can do for you?"
+  utter_goodbye:
+  - text: "Bye {PERSON}, hear you soon!"
+  - text: "Bye, was nice talking to you!"
+  utter_iamabot:
+  - text: "I'm a virtual agent"
+  - text: "Think of me as a virtual agent."
+  - text: "Well, I'm not a person, I'm a virtual agent."
+  - text: "I'm a virtual being, not a real person."
+  - text: "I'm a conversational app."
+  - text: "That's me. I chat, therefore I am."
+  utter_out_of_scope:
+  - text: "I didn't quite understand that. Could you please rephrase?"
+  utter_did_that_help:
+  - text: "How was this explained?"
+  - text: "How did that help?"
+  - text: "How do you feel about that?"
+
+
+####   ##    ##   ##  ##      ##    ########################
+####   ##    ##   ##   ##    ##     ########################
+####   ########   ##    ##  ##      ########################
+####   ##    ##   ##     ####       ########################
+####   ##    ##   ##      ##        ########################
+
+  utter_fac_disclosure:
+    - text: "Did you already tell someone?"
+
+  utter_fac_disclosure_yes:
+    - text: "So, how was the reaction?"
+
+  utter_fac_disclosure_no:
+    - text: "Ok, how do you feel about telling someone?"
+
+  utter_fac_disclosure_how:
+    - condition:
+        - type: slot
+          name: emotion
+          value: "anger"
+      text: "Oh, I understand you are angry {PERSON}. To be honest, some people might react negatively. 
+            However, telling a trusted person about your infection separates “the friends from the acquaintances”, 
+            leaving you with the people you can really trust. However, I recommend you to disclose in small steps, 
+            you might want to find out first what they know and how they feel about HIV in general, before revealing 
+            your secret."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "disgust"
+      text: "Oh, I understand that this situation bothers you a lot {PERSON}. To be honest, some people might 
+            react negatively. However, telling a trusted person about your infection separates “the friends 
+            from the acquaintances”, leaving you with the people you can really trust. However, I recommend 
+            you to disclose in small steps, you might want to find out first what they know and how they feel 
+            about HIV in general, before revealing your secret."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "fear"
+      text: "Oh, I guess that you fear being left alone or encountering negative reactions? To be honest {PERSON}, 
+            some people might react negatively. However, telling a trusted person about your infection separates 
+            “the friends from the acquaintances”, leaving you with the people you can really trust. However, I 
+            recommend you to disclose in small steps, you might want to find out first what they know and how they 
+            feel about HIV in general, before revealing your secret."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "joy"
+      text: "It is great that you think so positively about it {PERSON}! I feel like telling a trusted person about 
+            your infection might offer you many chances, because you then know exactly where you stand with them 
+            and won’t invest time in people that might disappoint you. However, I recommend you to disclose in small 
+            steps, you might want to find out first what they know and how they feel about HIV in general, before 
+            revealing your secret."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "neutral"
+      text: "Well, to be honest {PERSON}, some people might react negatively. However, telling a trusted person about 
+            your infection separates “the friends from the acquaintances”, leaving you with the people you can really 
+            trust. However, I recommend you to disclose in small steps, you might want to find out first what they 
+            know and how they feel about HIV in general, before revealing your secret."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "sadness"
+      text: "Oh, I understand that this situation makes you sad {PERSON}. To be honest, some people might react 
+            negatively. However, telling a trusted person about your infection separates “the friends from the 
+            acquaintances”, leaving you with the people you can really trust. However, I recommend you to disclose 
+            in small steps, you might want to find out first what they know and how they feel about HIV in general, 
+            before revealing your secret."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "surprise"
+      text: "Well listen {PERSON}, don’t be too surprised when encountering positive and negative reactions when 
+            disclosing your secret. To be honest, some people might react negatively. However, telling a trusted 
+            person about your infection separates “the friends from the acquaintances”, leaving you with the people 
+            you can really trust. However, I recommend you to disclose in small steps, you might want to find out 
+            first what they know and how they feel about HIV in general, before revealing your secret."
+  utter_fac_adherence_why:
+    - text: "Ok, first of all, how are your feelings about taking the medicine?"
+  utter_fac_adherence_reachout:
+    - text: "So you want to know what to respect when talking the medicine and probably why you should take it so often?"
+  utter_fac_adherence_how:
+    - condition:
+        - type: slot
+          name: emotion
+          value: "anger"
+      text: "Oh, I see that taking medicine so often is making you angry, I believe many others feel the same. 
+            However: the medication blocks the virus to spread within your body, so when you take the medicine 
+            every day, you keep the viral load under control. On the other hand, if you don’t take the pills 
+            every day, the virus will spread and will make you sick, that’s why it is so important to stick to 
+            your prescribed plan."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "disgust"
+      text: "Oh, I feel that taking so many pills disgusts you, I believe many others feel the same. 
+            However: the medication blocks the virus to spread within your body, so when you take the medicine every 
+            day, you keep the viral load under control. On the other hand, if you don’t take the pills every day, the 
+            virus will spread and will make you sick, that’s why it is so important to stick to your prescribed plan."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "fear"
+      text: "Oh, I understand that you might be afraid of these medications because you don't know what the consequences
+            are and you actually feel healthy right now? You know, the medication blocks the virus to spread within your
+            body, so when you take the medicine every day, you keep the viral load under control. On the other hand, 
+            if you don’t take the pills every day, the virus will spread and will make you sick, that’s why it is so 
+            important to stick to your prescribed plan."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "joy"
+      text: "It's nice to see that you're positive about the medicine - you should be! The medication blocks the virus 
+            to spread within your body, so when you take the medicine every day, you keep the viral load under control. 
+            On the other hand, if you don’t take the pills every day, the virus will spread and will make you sick, 
+            that’s why it is so important to stick to your prescribed plan."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "neutral"
+      text: "Well, the medication blocks the virus to spread within your body, so when you take the medicine every day, 
+            you keep the viral load under control. On the other hand, if you don’t take the pills every day, the virus 
+            will spread and will make you sick, that’s why it is so important to stick to your prescribed plan."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "sadness"
+      text: "Having to take so many pills is making you sad, maybe sometimes you even feel sick when taking it? It is 
+            actually the opposite: the medication blocks the virus to spread within your body, so when you take the 
+            medicine every day, you keep the viral load under control. On the other hand, if you don’t take the pills 
+            every day, the virus will spread and will make you sick, that’s why it is so important to stick to your 
+            prescribed plan."
+    - condition:
+        - type: slot
+          name: emotion
+          value: "Surprise"
+      text: "Maybe you didn’t know that you have to take the medicine every day? However, you should do it, as the 
+            medication blocks the virus to spread within your body, so when you take the medicine every day, you keep 
+            the viral load under control. On the other hand, if you don’t take the pills every day, the virus will 
+            spread and will make you sick, that’s why it is so important to stick to your prescribed plan."
+  utter_fac_contracting_general:
+    - text: "Well, probably first the fact about contracting HIV, if that's ok for you?"
+  utter_fac_contracting_sex:
+    - text: "This means: you can have Sex being HIV-positive, but need to practice safe sex using condoms"
+  utter_fac_contracting_kids_mf:
+    - text: "Alright, firstly, it depends if you are male or female? In order to advise you correctly
+            please give me the sex you were assigned to at birth."
+  utter_fac_contracting_kids_feel:
+    - text: "Thank you! And now please tell me, if you couldn't have kids, what would that mean for you?"
+  utter_fac_contracting_kids:
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "anger"
+      text: "I understand that not being able to have kids would make you angry, as becoming a father might be a really 
+            strong wish? But listen: there is still hope! However: If you are a man living with HIV and wish to have 
+            children, you need the support and advice of a healthcare provider or a reproductive health counselor 
+            experience with HIV-issues. Meaning: you should not have kids straight away and check first what is 
+            possible or not with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "disgust"
+      text: "I understand that this disgusts you, as you might always wanted to become a father? However: If you are a 
+            man living with HIV and wish to have children, you need the support and advice of a healthcare provider or 
+            a reproductive health counselor experience with HIV-issues. Meaning: you should not have kids straight away 
+            and check first what is possible or not with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "fear"
+      text: "I understand that you fear not being able to become a father? But listen: there is still hope! However: If 
+            you are a man living with HIV and wish to have children, you need the support and advice of a healthcare 
+            provider or a reproductive health counselor experience with HIV-issues. Meaning: you should not have kids 
+            straight away and check first what is possible or not with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "joy"
+      text: "I am relieved to hear that not being able to become a father does not bother you too much! In general: If 
+            you are a man living with HIV and wish to have children, you need the support and advice of a healthcare 
+            provider or a reproductive health counselor experience with HIV-issues. Meaning: you should not have kids 
+            straight away and check first what is possible or not with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "neutral"
+      text: "If you are a man living with HIV and wish to have children, you need the support and advice of a healthcare 
+            provider or a reproductive health counselor experienced with HIV-issues. Meaning: you should not have kids 
+            straight away and check first what is possible or not with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "sadness"
+      text: "I feel that not being able to become a father would make you very sad, I understand that. But listen: 
+            there is still hope after all! In general: If you are a man living with HIV and wish to have children, 
+            you need the support and advice of a healthcare provider or a reproductive health counselor experience 
+            with HIV-issues. Meaning: you should not have kids straight away and check first what is possible or not 
+            with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "male"
+        - type: slot
+          name: emotion
+          value: "surprise"
+      text: "Maybe you have not yet thought about if you want to have kids or not? So in general: If you are a man 
+            living with HIV and wish to have children, you need the support and advice of a healthcare provider or a 
+            reproductive health counselor experience with HIV-issues. Meaning: you should not have kids straight away 
+            and check first what is possible or not with professionals."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "anger"
+      text: "I understand that not being able to have kids would make you angry, as becoming a mother might be a really 
+            strong wish? But listen: there is still hope! However: If a woman living with HIV decides to get pregnant it
+            is important to maintain a low viral load (VL) and that you contact your health care provider for a 
+            reproductive health counselling guidance, before getting pregnant."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "disgust"
+      text: "I understand that this disgusts you, as you might really want to become a mother? However: If you are a 
+            woman living with HIV and decide to get pregnant it is important that you maintain a low viral load (VL) 
+            and that you contact your health care provider for a reproductive health counselling guidance, before 
+            getting pregnant."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "fear"
+      text: "I understand that you fear not being able to become a mother? But listen: there is still hope! If a woman 
+            living with HIV decides she wants to get pregnant it is important to maintain a low viral load (VL). Please 
+            contact your health care provider for a reproductive health counselling guidance, before getting pregnant."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "joy"
+      text: "I’m relieved to hear that not being able to become a mother does not bother you too much! In general: If 
+            you are a woman living with HIV and decide to get pregnant it is important that you maintain a low viral 
+            load (VL) and that you contact your health care provider for a reproductive health counselling guidance, 
+            before getting pregnant."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "neutral"
+      text: "If a woman living with HIV decides she wants to get pregnant it is important to maintain a low viral load 
+            (VL) and to contact your health care provider for a reproductive health counselling guidance, before 
+            getting pregnant."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "sadness"
+      text: "I feel that not being able to become a mother would make you very sad, I understand that. But listen: there
+            is still hope after all! In general: If you are a woman living with HIV and decide to get pregnant it is 
+            important that you maintain a low viral load (VL) and that you contact your health care provider for a 
+            reproductive health counselling guidance, before getting pregnant."
+    - condition:
+        - type: slot
+          name: sex
+          value: "female"
+        - type: slot
+          name: emotion
+          value: "surprise"
+      text: "Maybe you have not yet thought about if you want to have kids or not? So in general: If you are a woman 
+            living with HIV and decide to get pregnant it is important that you maintain a low viral load (VL) and that 
+            you contact your health care provider for a reproductive health counselling guidance, before getting 
+            pregnant."
+    - text: "Error (utter_fac_contracting_kids)"
+  utter_fac_contracting_kids_f:
+    - text: "I understand. So if you are a woman living with HIV and decide to get pregnant it is important that you maintain \n\n
+            a low viral load (VL) and that you contact your health care provider for a reproductive health \n\n
+            counselling guidance, before getting pregnant."
+  utter_faq_explain_HIV:
+    - text: "HIV is a virus – an infection with HIV that can make you sick \n\n
+        HIV is passed on from one person to another through:\n\n
+        1. Unprotected Sex \n\n
+        2. Sharing needles or injecting equipment \n\n
+        3. Blood transfusions and organ transplants \n\n
+        4. From a mother to her baby during pregnancy, vaginal delivery and breastfeeding \n\n
+        Without treatment, HIV damages your immune system. \n\n
+        Your immune system is the part of your body that fights infection and protects you from getting sick. \n\n
+        When your immune system is damaged you are more likely to get ill."
+  utter_faq_contracting_HIV:
+    - text: "HIV is passed on from one person to another. The HIV virus can only be passed on through: \n\n
+            1. Unprotected Sex \n\n
+            2. Sharing needles or injecting equipment \n\n
+            3. Blood transfusions and organ transplants \n\n
+            4. From a mother to her baby during pregnancy, vagina delivery and breastfeeding"
+#  utter_faq_HIV_positive:
+#    - text: "If you are unsure whether you are HIV positive or negative, you can take an HIV test at a health center or hospital. \n\n
+#    This is usually done by taking blood, which is then tested in a laboratory."
+  utter_faq_HIV_vs_AIDS:
+    - text: "HIV is not the same thing as AIDS. \n\n
+        HIV is the virus that can get passed on to another person. \n\n
+        AIDS is a state of sickness that occurs when your body’s immune system is so damaged by HIV, it can’t fight off infections. \n\n
+        People who have AIDS will feel sick, whereas people with HIV might not notice anything is wrong. \n\n
+        Without treatment AIDS can lead to death. \n\n
+        Today, antiretroviral treatment is so good, people living with HIV can live a normal productive life and never feel sick as long as they take their medication regularly."
+  utter_faq_HIV_cure:
+    - text: "There is no cure for HIV, although antiretroviral treatment can control the virus, meaning that people with HIV can live long and healthy lives. \n\n
+        Most research is looking for a functional cure where HIV is reduced to undetectable and harmless levels in the body permanently, but some residual virus may remain. \n\n
+        Other research is looking for a sterilising cure where HIV is eradicated from the body completely, but this is more complex and risky. \n\n
+        Trials of HIV vaccines are encouraging, but so far offer only partial protection. \n\n
+        Treatment is the only way to manage HIV and prevent it from damaging your immune system. It also reduces the risk of passing HIV on to your sexual partners."
+  utter_faq_HIV_fatal:
+    - text: "It is true that people who do not receive treatment for HIV will eventually (over years) become ill and die of complications of HIV infection. \n\n
+        With effective treatment (called antiretroviral therapy), however, most people with HIV infection will lead long and healthy lives; this is especially true if they start HIV treatment when their immune system is still relatively strong."
+
+##################### CHITCHAT #######################
+
+  utter_greetings.how_are_you:
+    - text: "Doing great, thanks!"
+    - text: "I'm doing very well. Thanks!"
+    - text: "Feeling wonderful!"
+    - text: "Wonderful! Thanks for asking."
+  utter_agent.can_you_help:
+  - text: "I'll certainly try my best. Do you want to know how I can help you?"
+  - text: "Sure. I'd be happy to. Do you want to know what I am capable of doing?"
+  - text: "I'm glad to help. What can I do for you?"
+  utter_appraisal.thank_you:
+  - text: "Anytime. That's what I'm here for."
+  - text: "It's my pleasure to help."
+
+actions:
+  - action_emotion
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

@@ -1,0 +1,225 @@
+version: "3.1"
+
+stories:
+
+- story: start via telegram
+  steps:
+  - intent: start
+  - action: utter_greet
+
+- story: start and information
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: PERSON
+  - action: utter_PERSON
+  - intent: emotion
+  - action: action_emotion
+  - action: utter_emotion_introduction
+  - intent: affirm
+  - action: utter_bot_capabilities
+
+- story: start and no information
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: PERSON
+  - action: utter_PERSON
+  - intent: emotion
+  - action: action_emotion
+  - action: utter_emotion_introduction
+  - intent: deny
+  - action: utter_unhappy_anything_else
+
+- story: fac_disclosure should and yes
+  steps:
+    - intent: fac_disclosure_should
+    - action: utter_fac_disclosure
+    - intent: affirm
+    - action: utter_fac_disclosure_yes
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_disclosure_how
+
+- story: fac_disclosure should and no
+  steps:
+    - intent: fac_disclosure_should
+    - action: utter_fac_disclosure
+    - intent: deny
+    - action: utter_fac_disclosure_no
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_disclosure_how
+
+- story: fac_disclosure how and yes
+  steps:
+    - intent: fac_disclosure_how
+    - action: utter_fac_disclosure
+    - intent: affirm
+    - action: utter_fac_disclosure_yes
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_disclosure_how
+
+- story: fac_disclosure how and no
+  steps:
+    - intent: fac_disclosure_how
+    - action: utter_fac_disclosure
+    - intent: deny
+    - action: utter_fac_disclosure_no
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_disclosure_how
+
+- story: fac_adherence_why and happy
+  steps:
+    - intent: fac_adherence_why
+    - action: utter_fac_adherence_why
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_adherence_how
+
+
+- story: fac_contracting_sex
+  steps:
+    - intent: fac_contracting_sex
+    - action: utter_fac_contracting_general
+    - intent: affirm
+    - action: utter_faq_contracting_HIV
+    - action: utter_fac_contracting_sex
+
+- story: fac_contracting_kids
+  steps:
+    - intent: fac_contracting_kids
+    - action: utter_fac_contracting_kids_mf
+    - intent: male
+    - action: utter_fac_contracting_kids_feel
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_contracting_kids
+
+- story: fac_contracting_kids
+  steps:
+    - intent: fac_contracting_kids
+    - action: utter_fac_contracting_kids_mf
+    - intent: female
+    - action: utter_fac_contracting_kids_feel
+    - intent: emotion
+    - action: action_emotion
+    - action: utter_fac_contracting_kids
+
+- story: faq_explain_HIV
+  steps:
+    - intent: faq_explain_HIV
+    - action: utter_faq_explain_HIV
+    - action: utter_did_that_help
+
+- story: faq_contracting_HIV
+  steps:
+    - intent: faq_contracting_HIV
+    - action: utter_faq_contracting_HIV
+    - action: utter_did_that_help
+
+- story: chitchat1
+  steps:
+  - intent: greetings.how_are_you
+  - action: utter_greetings.how_are_you
+
+- story: chitchat2
+  steps:
+  - intent: agent.can_you_help
+  - action: utter_agent.can_you_help
+
+- story: chitchat3
+  steps:
+  - intent: appraisal.thank_you
+  - action: utter_appraisal.thank_you
+
+- story: faq_HIV_vs_AIDS
+  steps:
+    - intent: faq_HIV_vs_AIDS
+    - action: utter_faq_HIV_vs_AIDS
+    - action: utter_did_that_help
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - slot_was_set:
+    - emotion: neutral
+  - action: utter_greet
+  - intent: PERSON
+    entities:
+    - PERSON: Alex
+  - slot_was_set:
+    - PERSON: Alex
+  - action: utter_PERSON
+  - intent: emotion
+  - slot_was_set:
+    - emotion: anger
+  - action: action_emotion
+  - slot_was_set:
+    - emotion: anger
+  - action: utter_emotion_introduction
+  - intent: affirm
+  - slot_was_set:
+    - emotion: neutral
+  - action: utter_bot_capabilities
+  - intent: fac_disclosure_how
+    entities:
+    - audience: boyfriend
+  - action: utter_fac_disclosure
+  - intent: deny
+  - action: utter_fac_disclosure_no
+  - intent: emotion
+  - slot_was_set:
+    - emotion: fear
+  - action: action_emotion
+  - slot_was_set:
+    - emotion: fear
+  - action: utter_fac_disclosure_how
+  - intent: fac_adherence_why
+  - slot_was_set:
+    - emotion: surprise
+  - action: utter_fac_adherence_why
+  - intent: emotion
+  - slot_was_set:
+    - emotion: disgust
+  - action: action_emotion
+  - slot_was_set:
+    - emotion: disgust
+  - action: utter_fac_adherence_how
+
+- story: interactive_story_1
+  steps:
+  - intent: fac_adherence_why
+  - slot_was_set:
+    - emotion: neutral
+  - action: utter_fac_adherence_why
+  - intent: emotion
+  - slot_was_set:
+    - emotion: disgust
+  - action: action_emotion
+  - slot_was_set:
+    - emotion: disgust
+  - action: utter_fac_adherence_how
+  - intent: fac_contracting_sex
+  - slot_was_set:
+    - emotion: sadness
+  - action: utter_fac_contracting_general
+  - intent: affirm
+  - slot_was_set:
+    - emotion: neutral
+  - action: utter_faq_contracting_HIV
+  - action: utter_fac_contracting_sex
+  - intent: fac_contracting_kids
+  - action: utter_fac_contracting_kids_mf
+  - intent: female
+  - slot_was_set:
+    - sex: female
+  - action: utter_fac_contracting_kids_feel
+  - intent: emotion
+  - slot_was_set:
+    - emotion: sadness
+  - action: action_emotion
+  - slot_was_set:
+    - emotion: sadness
+  - action: utter_fac_contracting_kids
