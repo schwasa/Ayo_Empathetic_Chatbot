@@ -3,7 +3,7 @@ This is the empathetic chatbot version used within my Masters Thesis. For furthe
 
 ## Installation & Configuration
 
-Here are the simple steps that you can follow to use a template:
+Here are the steps that you can follow to use the chatbot:
 
 * Create new folder/directory, install python and create virtual environment
 
@@ -39,3 +39,8 @@ Here are the simple steps that you can follow to use a template:
     rasa run actions
     ```
 * Start talking to the bot in terminal with command rasa shell
+
+    ```
+    rasa shell
+    ```
+
